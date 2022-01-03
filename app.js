@@ -17,7 +17,6 @@ const db = mysql.createConnection({
     user: process.env.USERNAME,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
-    port: process.env.DB_PORT
 });
 
 app.use(express.urlencoded({ extended : false}));
