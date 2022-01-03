@@ -19,5 +19,5 @@
     "start": "node app.js"
   },
   "author": "Antash and Arpit",
-  "license": "ISC",
+  "license": "ISC"
 }
