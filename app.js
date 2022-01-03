@@ -130,6 +130,10 @@ app.get('/movieReview', (req,res, error) => {
     });
 });
 
+app.get('/', (req, res) => {
+    res.send("hello motherfucker!!!");
+})
+
 app.listen(process.env.PORT, () => console.log('App is running'));
 
 
