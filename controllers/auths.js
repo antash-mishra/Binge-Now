@@ -57,7 +57,7 @@ exports.addWatch = (req, res) => {
 
                             else if(result.length > 0 ) {
                                 console.log(req.session);
-                                res.send(`<a href="http://localhost:5000/home.html"> Movie already added</a>`);
+                                res.send(`<a href="/Home.html"> Movie already added</a>`);
                             }
 
                             else {
@@ -65,7 +65,7 @@ exports.addWatch = (req, res) => {
                                     if(err) {
                                         console.log(err);
                                     }   
-                                    res.send(`<a href="/home.html"> Movie added</a>`);    
+                                    res.send(`<a href="/Home.html"> Movie added</a>`);    
                                 });
                             }
 
@@ -86,7 +86,7 @@ exports.addWatch = (req, res) => {
                                     console.log(error);
                                 }    
                             });
-                            res.send(`<a href="/home.html"> Movie added</a>`);
+                            res.send(`<a href="/Home.html"> Movie added</a>`);
                         });
                     }
                     
@@ -113,7 +113,7 @@ exports.addWatch = (req, res) => {
 
                             else if(result.length > 0 ) {
                                 console.log(req.session);
-                                res.send(`<a href="http://localhost:5000/home.html"> Series already added</a>`);
+                                res.send(`<a href="/Home.html"> Series already added</a>`);
                             }
 
                             else {
@@ -121,7 +121,7 @@ exports.addWatch = (req, res) => {
                                     if(err) {
                                         console.log(err);
                                     }   
-                                    res.send(`<a href="/home.html"> Series added</a>`);    
+                                    res.send(`<a href="/Home.html"> Series added</a>`);    
                                 });
                             }
 
@@ -140,7 +140,7 @@ exports.addWatch = (req, res) => {
                                     console.log(req.session);
                                     console.log(error);
                                 }
-                                res.send(`<a href="/home.html">Series added</a>`);    
+                                res.send(`<a href="/Home.html">Series added</a>`);    
                             });
                         });
                     }
@@ -148,7 +148,7 @@ exports.addWatch = (req, res) => {
             }
             
             else {
-                res.send(`<a href="/home.html">Add type</a>`);
+                res.send(`<a href="/Home.html">Add type</a>`);
             }
 
             //res.send('movie added');
