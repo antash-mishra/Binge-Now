@@ -20,7 +20,4 @@
   },
   "author": "Antash and Arpit",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.6"
-  }
 }
