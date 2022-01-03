@@ -10,7 +10,6 @@ const mysql = require('mysql');
 const { constants } = require('buffer');
 
 
-
 dotenv.config({path: './.env'});
 
 const db = mysql.createConnection({
@@ -136,6 +135,6 @@ app.get('/', (req, res) => {
 
 app.listen(process.env.PORT, () => console.log('App is running'));
 
-
+module.exports = app;
 
 
