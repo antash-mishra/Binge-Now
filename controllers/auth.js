@@ -39,7 +39,7 @@ exports.login = async (req,res) => {
                     sessionData.username = userName;
                     console.log(req.session);
                     console.log(req.session.username);
-                    res.redirect('/home.html');
+                    res.redirect('/../views/home.html');
                 } else {
                     res.send("Incorrect Username and/or Password!");
                 }			
@@ -100,7 +100,7 @@ exports.register = (req,res) => {
 
             else {
                 console.log(results);
-                return res.send(`<a href = "/index.html"> <h2>User registerd </h2></a>`);
+                return res.send(`<a href = "/../views/index.html"> <h2>User registerd </h2></a>`);
             }
         });
         console.log('bye');
@@ -134,7 +134,7 @@ exports.addWatched = (req, res) => {
 
                     if(error) {
                         console.log(error);
-                        res.send(`<a href="Home.html"> ${error} </a>`);
+                        res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                     }
     
                     else if(results.length>0) {
@@ -144,28 +144,28 @@ exports.addWatched = (req, res) => {
                             console.log(req.session);
                             if(error) {
                                 console.log(error);
-                                res.send(`<a href="Home.html"> ${error} </a>`);
+                                res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                             }
 
                             else if(result.length > 0 ) {
                                 console.log(req.session);
-                                res.send(`<a href="/home.html"> Movie already added</a>`);
+                                res.send(`<a href="/../views/home.html"> Movie already added</a>`);
                             }
 
                             else {
                                 db.query('INSERT INTO watched_movie SET ?', {username: req.session.username, movie_id: imdbId, }, (err) => {
                                     if(err) {
                                         console.log(err);
-                                        res.send(`<a href="Home.html"> ${error} </a>`);
+                                        res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                     }
                                     db.query('INSERT INTO Review_Movies SET ?', {movie_id:imdbId, username: req.session.username, rating: rating, review: review}, (err) => {
                                         if(err) {
                                             console.log(err);
-                                            res.send(`<a href="Home.html"> ${error} </a>`);
+                                            res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                         }
                                     });       
                                 });
-                                res.send(`<a href="/home.html"> Movie added</a>`);
+                                res.send(`<a href="/../views/home.html"> Movie added</a>`);
                             }
                      
                         });
@@ -177,24 +177,24 @@ exports.addWatched = (req, res) => {
                             console.log('')
                             if(error) {
                                 console.log(error);
-                                res.send(`<a href="Home.html"> ${error} </a>`);
+                                res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                             }
                     
                             db.query('INSERT INTO watched_movie SET ?', {username: req.session.username, movie_id: imdbId}, (error) => {
                                 if(error) { 
                                     console.log(req.session);
                                     console.log(error);
-                                    res.send(`<a href="Home.html"> ${error} </a>`);
+                                    res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                 }
                                 db.query('INSERT INTO Review_Movies SET ?', {movie_id:imdbId, username: req.session.username, rating: rating, review: review}, (err) => {
                                     if(err) {
                                         console.log(err);
-                                        res.send(`<a href="Home.html"> ${error} </a>`);
+                                        res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                     }
                                 });
                                     
                             });
-                            res.send(`<a href="/home.html"> Movie added</a>`);
+                            res.send(`<a href="/../views/home.html"> Movie added</a>`);
                         });
     
                     }
@@ -209,7 +209,7 @@ exports.addWatched = (req, res) => {
     
                     if(error) {
                         console.log(error);
-                        res.send(`<a href="Home.html"> ${error} </a>`);
+                        res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                     }
     
                     else if(results.length>0) {
@@ -219,27 +219,27 @@ exports.addWatched = (req, res) => {
                             console.log(req.session);
                             if(error) {
                                 console.log(error);
-                                res.send(`<a href="Home.html"> ${error} </a>`);
+                                res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                             }
 
                             else if(result.length > 0 ) {
                                 console.log(req.session);
-                                res.send(`<a href="/home.html"> Series already added</a>`);
+                                res.send(`<a href="/../views/home.html"> Series already added</a>`);
                             }
 
                             else {
                                 db.query('INSERT INTO watched_series SET ?', {username: req.session.username, series_id: imdbId, season: season}, (err) => {
                                     if(err) {
                                         console.log(err);
-                                        res.send(`<a href="Home.html"> ${error} </a>`);
+                                        res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                     }   
                                     db.query('INSERT INTO Review_Series SET ?', {series_id:imdbId, username: req.session.username, rating: rating, review: review}, (err) => {
                                         if(err) {
                                             console.log(err);
-                                            res.send(`<a href="Home.html"> ${error} </a>`);
+                                            res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                         }
                                     });
-                                    res.send(`<a href="/home.html"> Series added</a>`);    
+                                    res.send(`<a href="/../views/home.html"> Series added</a>`);    
                                 });
                             }
 
@@ -252,7 +252,7 @@ exports.addWatched = (req, res) => {
                             (error, result) => {
                             if(error) {
                                 console.log(error);
-                                res.send(`<a href="Home.html"> ${error} </a>`);
+                                res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                             }
     
                             else {
@@ -262,19 +262,19 @@ exports.addWatched = (req, res) => {
                                     if(error) { 
                                         console.log(req.session);
                                         console.log(error);
-                                        res.send(`<a href="Home.html"> ${error} </a>`);
+                                        res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                     }
 
                                     else {
                                         db.query('INSERT INTO Review_Series SET ?', {series_id:imdbId, username: req.session.username, rating: rating, review: review}, (err) => {
                                             if(err) {
                                                 console.log(err);
-                                                res.send(`<a href="Home.html"> ${error} </a>`);
+                                                res.send(`<a href="/../views/Home.html"> ${error} </a>`);
                                             }
                                         });                                    
                                     }
     
-                                    res.send(`<a href="/home.html">Series added</a>`);    
+                                    res.send(`<a href="/../views/home.html">Series added</a>`);    
                                 });
                             }
                         });
@@ -283,7 +283,7 @@ exports.addWatched = (req, res) => {
             }
             
             else {
-                res.send(`<a href="/home.html">Add type</a>`);
+                res.send(`<a href="/../views/home.html">Add type</a>`);
             }
 
             //res.send('movie added');
