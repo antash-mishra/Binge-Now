@@ -26,7 +26,7 @@ function getmovies() {
                     <label for="${x}">
                         <img src="${movies[i].Poster}" /> 
                         <h5>"${movies[i].Title}"</h5>
-                        <a onclick="movieSelected('${movies[i].imdbID}')" class="btn btn-primary" href="/movie.html">Movie Details</a>
+                        <a onclick="movieSelected('${movies[i].imdbID}')" class="btn btn-primary" href="#">Movie Details</a>
                     </label>
                 </li>                 
                     
@@ -40,13 +40,13 @@ function getmovies() {
                
 }
     function movieSelected(id){
-        localStorage.setItem('movieId', id);
-        window.location = 'movie.html';
+        sessionStorage.setItem('movieId', id);
+        window.location = '/movie.html';
         return false;
     }
 
     function getMovie() {
-        let movieId = localStorage.getItem('movieId');
+        let movieId = sessionStorage.getItem('movieId');
         fetch('http://www.omdbapi.com?i='+movieId+'&apikey=658036e4')
             .then(res => res.json())
             .then(data => {
@@ -83,3 +83,5 @@ function getmovies() {
             })
             .catch(err => console.log(err));
         }
+
+      

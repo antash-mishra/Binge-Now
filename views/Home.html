@@ -7,7 +7,7 @@
     <title>Home</title>
     <style>
         .has-bg-img {
-            background: url(images/background_3.jpg)center center;
+            background: url(/../images/background_3.jpg)center center;
             background-size: cover;
         }
     </style>
@@ -88,7 +88,7 @@
                         <label class="label">Select type</label>
                         <div class="control is-expanded">
                             <div class="select">
-                                <select name="type" class="is-hovered" id="type">
+                                <select name="type" class="is-hovered" id="type" required>
                                 <option value="movie">Movie</option>
                                 <option value="series">Series</option>
                               </select>
@@ -98,7 +98,7 @@
                     <br>
                     <div class="field is-grouped">
                         <p class="control is-expanded">
-                            <input class="input" name="search" type="text" placeholder="Find" id="searches" onchange="getmovies()">
+                            <input class="input" name="search" type="text" placeholder="Find" id="searches" onchange="getmovies()" required>
                         </p>
                     </div>
                     <div class="field is-grouped is-grouped-right">

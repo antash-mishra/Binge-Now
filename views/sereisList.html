@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binge Now</title>
+    <style>
+        .has-bg-img {
+            background: url(/../images/web_shadow_glare_dark_49402_1920x1080.jpg)center center;
+            background-size: cover;
+        }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 
 <body onload="viewSeries()">
-    <section class="hero is-dark is-fullheight">
+    <section class="hero is-dark is-fullheight has-bg-img">
         <div class="hero-head">
             <nav class="navbar is-transparent">
                 <div class="container">
@@ -72,6 +78,7 @@
                   <th><abbr title="S No.">Serial No.</abbr></th>
                   <th>Title</th>
                   <th>Genre</th>
+                  <th>Remove</th>
                 </tr>
                 </thead>
                 <tbody id = "movies">

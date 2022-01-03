@@ -7,7 +7,7 @@
     <title>Watched</title>
     <style>
         .has-bg-img {
-            background: url(images/background_4.jpg)center center;
+            background: url(/../images/background_4.jpg)center center;
             background-size: cover;
         }
     </style>
@@ -95,7 +95,7 @@
                         <br>
                         <div class="field is-grouped">
                             <p class="control is-expanded">
-                                <input class="input" type="text" placeholder="Find" id="searches">
+                                <input class="input" type="text" placeholder="Find" id="searches" required>
                             </p>
                             <p class="control">
                                 <a class="button is-info" id = "search" onclick="getmovies()">
@@ -106,20 +106,14 @@
                         <div class="field">
                             <label class="label">Seasons</label>
                             <p class="control is-expanded">
-                                <input class="input" type="text" name="seasons" id="seasons">
+                                <input class="input" type="text" name="seasons" id="seasons" required>
                             </p>
-                        </div>
-                        <div class="container" id="containers">
-                            <div id ="row">
-                                <ul id="movies-series">
-                                </ul>
-                            </div>
                         </div>
                         <div class="field">
                             <label class="label">Rating</label>
                             <div class="control is-expanded">
                                 <div class="select">
-                                    <select class="is-hovered" id="rating" name = "rating">
+                                    <select class="is-hovered" id="rating" name = "rating" required>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -147,6 +141,12 @@
                             <p class="control">
                                 <input type="reset" class="button is-danger" value="Cancel">
                             </p>
+                        </div>
+                        <div class="container" id="containers">
+                            <div id ="row">
+                                <ul id="movies-series">
+                                </ul>
+                            </div>
                         </div>
                     </form>
                 </div>
