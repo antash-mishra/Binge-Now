@@ -23,6 +23,7 @@ exports.addWatch = (req, res) => {
     console.log(req.body);
     const type = req.body.type;
     const imdbId = req.body.imdbId;
+    console.log(imdbId);
     var queryString = "http://www.omdbapi.com?i=" + imdbId + "&apikey=658036e4";
 
     request(queryString, function(error, response, body){
@@ -33,6 +34,9 @@ exports.addWatch = (req, res) => {
             const genre = parseData.Genre;
             const imdb_rating = parseData.imdbRating;
             const totalSeasons = parseData.totalSeasons;
+            if(error){
+                console.log(error);
+            }
 
             if (type == 'movie') {
                 db.query('SELECT movie_id FROM Movies WHERE title = ?', [title], (error, results) => {
@@ -53,16 +57,17 @@ exports.addWatch = (req, res) => {
 
                             else if(result.length > 0 ) {
                                 console.log(req.session);
-                                res.send(`<a href="/home.html"> Movie already added</a>`);
+                                res.send(`<a href="http://localhost:5000/home.html"> Movie already added</a>`);
                             }
 
-
-                            db.query('INSERT INTO user_watchlist_movie SET ?', {username: req.session.username, movie_id: imdbId}, (err) => {
-                                if(err) {
-                                    console.log(err);
-                                }   
-                                res.send(`<a href="/home.html"> Movie added</a>`);    
-                            });
+                            else {
+                                db.query('INSERT INTO user_watchlist_movie SET ?', {username: req.session.username, movie_id: imdbId}, (err) => {
+                                    if(err) {
+                                        console.log(err);
+                                    }   
+                                    res.send(`<a href="/home.html"> Movie added</a>`);    
+                                });
+                            }
 
                         });
                     }
@@ -108,7 +113,7 @@ exports.addWatch = (req, res) => {
 
                             else if(result.length > 0 ) {
                                 console.log(req.session);
-                                res.send(`<a href="/home.html"> Series already added</a>`);
+                                res.send(`<a href="http://localhost:5000/home.html"> Series already added</a>`);
                             }
 
                             else {
@@ -150,5 +155,3 @@ exports.addWatch = (req, res) => {
         }
     });
 }
-
-

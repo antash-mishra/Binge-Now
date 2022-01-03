@@ -15,7 +15,8 @@ const db = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USERNAME,
     password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    database: process.env.DATABASE,
+    port: process.env.DB_PORT
 });
 
 db.connect(function (err) {
@@ -40,7 +41,7 @@ exports.login = async (req,res) => {
                     console.log(req.session.username);
                     res.redirect('/home.html');
                 } else {
-                    res.send('Incorrect Username and/or Password!');
+                    res.send("Incorrect Username and/or Password!");
                 }			
                 res.end();
             });
@@ -59,13 +60,12 @@ exports.login = async (req,res) => {
 exports.register = (req,res) => {
     console.log(req.body);
 
-    const userName = req.body.userName;
     const name = req.body.fullName;
-    const email = req.body.email;
     const age = req.body.age;
+    const gender = req.body.answer;
+    const userName = req.body.username;
     const password = req.body.password;
     const confirmPassword   = req.body.confirmPassword;
-
     console.log(userName);
 
     db.query('SELECT username FROM User WHERE username = ?', [userName], function (error, results) {
@@ -74,34 +74,38 @@ exports.register = (req,res) => {
             console.log(error); 
         }
 
-        console.log(results.length);
 
-        if ( results.length > 0 ) {
-            return res.send('That user is already in use');
-            //res.redirect('/index.html');
-        }
 
-        else if(password !== confirmPassword) {
-            return res.send('Passwords donot match');
-            //res.redirect('/index.html');
-        }
+        else {
 
-        //let hashPassword = bcrypt.hash(password, 8);
-        //console.log(hashPassword);
+            console.log(results.length);
 
-        db.query('INSERT INTO User SET ?', { username: userName, name: name, email: email, age: age, password: password}, () => {
+            if ( results.length > 0 ) {
+                return res.send('That user is already in use');
+                //res.redirect('/index.html');
+            }
+
+            else if(password !== confirmPassword) {
+                return res.send('Passwords donot match');
+                //res.redirect('/index.html');
+            }
+
+            let hashPassword = bcrypt.hash(password, 8);
+            console.log(hashPassword);
+
+        db.query('INSERT INTO User SET ?', { username: userName, name: name, gender: gender, age: age, password: password}, (error, results) => {
             if(error) {
                 console.log(error);
             }
 
             else {
                 console.log(results);
-                return res.send('User registered');
+                return res.send(`<a href = "/index.html"> <h2>User registerd </h2></a>`);
             }
         });
         console.log('bye');
-
-    });
+    }
+});
 }
 
 exports.addWatched = (req, res) => {
