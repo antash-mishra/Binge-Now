@@ -1,5 +1,7 @@
 # Binge Now
+Steps to follow:
 ---
-Steps to follow: 
-- [] `npm install`
-- [] `node app.js`
+- Clone the repository
+- `cd /Binge-Now`  
+- `npm install`
+- `node app.js`
