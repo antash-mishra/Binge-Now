@@ -1,5 +1,5 @@
 # Binge Now
-Steps to follow:
+To run the application:
 ---
 - Clone the repository
 - `cd /Binge-Now`  
