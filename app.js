@@ -8,6 +8,8 @@ const dotenv = require('dotenv');
 const { response, request } = require('express');
 const mysql = require('mysql');
 const { constants } = require('buffer');
+const readline = require('readline');
+const fs = require('fs');
 
 
 dotenv.config({path: './.env'});
@@ -19,6 +21,8 @@ const db = mysql.createConnection({
     database: process.env.DATABASE,
     port: process.env.DB_PORT
 });
+
+
 
 app.use(express.urlencoded({ extended : false}));
 app.use(express.static('public'));
