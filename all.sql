@@ -18,6 +18,8 @@
 --
 -- Table structure for table `Movies`
 --
+CREATE DATABASE dev CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE dev;
 
 DROP TABLE IF EXISTS `Movies`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
