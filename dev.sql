@@ -111,3 +111,20 @@ CREATE TABLE watched_series (
   CONSTRAINT fkwsus FOREIGN KEY (username) REFERENCES User (username)
 );
 
+
+DELIMITER //
+
+CREATE PROCEDURE procedure_review_series()
+BEGIN
+  select r.username, s.title, s.genre, r.rating, r.review, s.user_rating from Review_Series r, Series s where r.series_id = s.series_id;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE procedure_review_movie()
+BEGIN
+select r.username, m.title, m.genre, r.rating, r.review, m.user_rating from Review_Movies r, Movies m where r.movie_id = m.movie_id;
+END //
+DELIMITER ; 
